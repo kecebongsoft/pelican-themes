@@ -489,3 +489,15 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
         font-style:italic;
         color:#929292;
     }
+
+    .body-quote{
+        width:100%;
+        text-align:center;
+        font-size:32px;
+        font-style:italic;
+
+    }
+    .body-quote a{
+        text-decoration:none;
+
+    }

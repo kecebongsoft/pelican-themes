@@ -6,8 +6,22 @@
         {% if loop.first %}
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h1> 
-                    {% include 'article_infos.html' %}{{ article.content }}{% include 'comments.html' %}
+                {% if not article.type == "quote" %}
+                    <h1 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }} -- {{article.anu}}</a></h1> 
+                    {% include 'article_infos.html' %}
+                {% endif %}
+
+                {% if article.type == "quote" %}
+                    <div class="body-quote">
+                        <a href='{{ SITEURL }}/{{ article.url }}'>
+                {% endif %}
+
+                {{ article.content }}{% include 'comments.html' %}
+
+                {% if article.type == "quote" %}
+                        </a>
+                    </div>
+                {% endif %}
                 </article>
             </aside><!-- /#featured -->
         {% endif %}

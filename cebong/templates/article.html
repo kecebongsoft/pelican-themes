@@ -3,16 +3,25 @@
 {% block content %}
 <section id="content" class="body">
   <article>
+    {% if not article.type == "quote" %}
     <header>
       <h1 class="entry-title">
-        <a href="{{ article.url }}" rel="bookmark"
-           title="Permalink to {{ article.title|striptags }}">{{ article.title}}</a></h1>
+        {{ article.title}}</h1>
       {% include 'twitter.html' %}
     </header>
+    {% endif %}
 
     <div class="entry-content">
+      {% if not article.type == "quote" %}
       {% include 'article_infos.html' %}
+      {% endif %}
+      {% if article.type == "quote" %}
+          <div class="body-quote">
+      {% endif %}
       {{ article.content }}
+      {% if article.type == "quote" %}
+          </div>
+      {% endif %}
     </div><!-- /.entry-content -->
     {% if DISQUS_SITENAME %}
     <div class="comments">
